@@ -1,4 +1,4 @@
-*ctrlspace.txt*             For Vim version 7.3+      Last change: 2015.11.17
+*ctrlspace.txt*           For Vim version 7.3+      Last change: 2020.01.09
 *ctrlspace*
 *vim-ctrlspace*
 
@@ -16,14 +16,13 @@
 
 
 
-Copyright (c) 2013-2015 Szymon Wrozynski and Contributors
+Copyright (c) 2013-2020 Szymon Wrozynski and Contributors
 
 ==========================================================================
 
 Table of Contents                                            *ctrlspace-toc*
 
  1. Overview                                            |ctrlspace-overview|
-   1.1 Version 5                                       |ctrlspace-version-5|
  2. Idea by Analogy                                         |ctrlspace-idea|
  3. Getting Started                              |ctrlspace-getting-started|
    3.1 Installation                                 |ctrlspace-installation|
@@ -125,44 +124,12 @@ The plugin name follows the convention of naming fuzzy search plugins
 after their default mappings (like Command-T or CtrlP), hence the plugin
 mapping is by default `Ctrl` + `Space`.
 
-If you like the plugin please don't forget to leave a star for this
-project! This will help me to estimate the plugin popularity and plan
-further development :).
+If you have already starred this repo, thank you!
 
-If you have already starred this repo, thank you! Thanks to you it's my
-pet project now :). If you have a question, a feature request, or a new
-idea, don't hesitate to post new issues or pull requests. Collaboration
-is the most awesome thing in the open source community!
+If you have a question, a feature request, or a new
+idea, don't hesitate to post new issues or pull requests.
 
-                                                             |ctrlspace-toc|
---------------------------------------------------------------------------
-
-1.1 Version 5                                          *ctrlspace-version-5*
-
-Vim-CtrlSpace started over 2 years ago as a fork of another plugin and the
-Version 5 is the result of the experience gained during that period and
-cooperation with the community.
-
-Version 5 is the biggest upgrade in the plugin history. All plugin code
-has been rewritten from scratch taking user feedback as a great resource
-of ideas and challenges into account. Thanks to users the plugin has
-configurable key mappings and allows you to handle projects with 100 000
-files!
-
-In case you're curious, Vim-CtrlSpace 5 took me 5 months of spare evenings
-to complete :).
-
-The most exciting features of Vim-CtrlSpace 5 are:
-
- * better, modular, and extensible code base
- * simplified, well thought-out, and clear design
- * new fuzzy search engine for files (written in Go)
- * more effective and responsive behavior
- * fine-grained configuration
-
-Version 5 is not backward compatible. All configuration variables and API
-functions have been renamed. Please check |ctrlspace-configuration| for
-more info.
+Collaboration is the most awesome thing in the open source community!
 
                                                              |ctrlspace-toc|
 ==========================================================================
@@ -242,11 +209,12 @@ You can also clone the repository to your `.vim` directory: >
 
 3.2 Basic Settings                                *ctrlspace-basic-settings*
 
-First please make sure that you set `nocompatible` and `hidden` options
-(required by the plugin) in your `.vimrc`: >
+First please make sure that you set `nocompatible` and `hidden` options,
+and set `encoding=utf-8` (as required by the plugin) in your `.vimrc`: >
 
     set nocompatible
     set hidden
+    set encoding=utf-8
 <
 If you feel brave enough turn off tabline: >
 
@@ -1151,6 +1119,11 @@ several architectures:
  * `file_engine_linux_386`
  * `file_engine_linux_amd64`
  * `file_engine_linux_arm`
+ * `file_engine_linux_mips`
+ * `file_engine_linux_mips64`
+ * `file_engine_linux_mips64le`
+ * `file_engine_linux_mipsle`
+ * `file_engine_linux_s390x`
  * `file_engine_netbsd_386`
  * `file_engine_netbsd_amd64`
  * `file_engine_netbsd_arm`
@@ -1443,6 +1416,15 @@ pure Vim Script (like `CtrlP`) thus it affects the performance too.
 
 General Assumptions~
 
+The file engine binaries have been compiled for various OS's and CPU
+types, but only those for Linux, MacOS and Windows on 64 bit architectures
+are available in the git repository. The other versions for their 32 bit
+architecture counterparts, as well as for FreeBSD, NetBSD and OpenBSD
+on 32 and 64 bit architectures can still be dowloaded from a specific
+release `all_os_file_engines`, downloadable at:
+
+	https://git.io/vim-ctrlspace-release-all_os_file_engines
+
 By default the plugin shows at most 500 items per list and 200 when fuzzy
 searched. That rule is enforced by internal fuzzy searcher implementation
 and by the external engine written in Go.
@@ -1566,7 +1548,7 @@ should be placed at the bottom (as last ones).
 
 10. Authors and License                      *ctrlspace-authors-and-license*
 
-Copyright (c) 2013-2015 Szymon Wrozynski and Contributors.
+Copyright (c) 2013-2020 Szymon Wrozynski and Contributors.
 
  * https://github.com/vim-ctrlspace/vim-ctrlspace/commits/master
 
@@ -1580,6 +1562,8 @@ Vim-Tabber by Jim Steward and Tabline by Matthew Kitt.
 
 Special thanks to Wojtek Ryrych (https://github.com/ryrych) for help and
 patience ;) and all Contributors.
+
+See `CHANGELOG.md` and the `git log` for descriptions of significant changes.
 
                                                              |ctrlspace-toc|
 ==========================================================================
